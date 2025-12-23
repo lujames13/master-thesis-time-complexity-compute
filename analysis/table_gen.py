@@ -5,8 +5,8 @@ def calculate_min_committee(N, f, target_prob):
     M = int(N * f)  # Number of malicious nodes
     # Iterate C from 1 to N to find the minimum C that satisfies the safety condition
     for C in range(1, N + 1):
-        # The threshold for attack success is majority (> C/2)
-        threshold = math.floor(C / 2)
+        # The threshold for attack success is > 2/3 (BFT assumption)
+        threshold = math.floor(C * 2 / 3)
         
         # Calculate P(X > threshold) using Hypergeometric Survival Function (sf)
         # stats.hypergeom.sf(k, M, n, N) 

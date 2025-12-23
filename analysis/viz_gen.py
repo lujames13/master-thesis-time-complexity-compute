@@ -6,7 +6,7 @@ import math
 def calculate_min_committee(N, f, target_prob):
     M = int(N * f)
     for C in range(1, N + 1):
-        threshold = math.floor(C / 2)
+        threshold = math.floor(C * 2 / 3)
         prob_failure = stats.hypergeom.sf(threshold, N, M, C)
         if prob_failure < target_prob:
             return C
